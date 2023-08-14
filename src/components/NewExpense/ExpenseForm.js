@@ -2,24 +2,24 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-    console.log(enteredTitle);
+    // console.log(enteredTitle);
   };
 
   const priceChangeHandler = (event) => {
     setEnteredPrice(event.target.value);
-    console.log(enteredPrice);
+    // console.log(enteredPrice);
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    console.log(enteredDate);
+    // console.log(enteredDate);
   };
 
   // 독립적인 핸들러 함수를 여러 개 두는 것 대신에 사용하는 대안 : 공유 핸들러 함수
@@ -43,6 +43,7 @@ const ExpenseForm = () => {
     };
 
     console.log(submitExpenseData);
+    props.onSaveExpenseData(submitExpenseData);
 
     setEnteredTitle("");
     setEnteredPrice("");
