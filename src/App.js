@@ -28,10 +28,10 @@ const DUMMY_DATA = [
 const App = () => {
   const [expensesData, setExpensesData] = useState(DUMMY_DATA);
 
-  const addExpenseData = (saveExpenseData) => {
-    console.log(saveExpenseData);
+  const addExpenseData = (expenseDate) => {
+    console.log(expenseDate);
     setExpensesData((prevExpensesData) => {
-      return [saveExpenseData, ...prevExpensesData];
+      return [expenseDate, ...prevExpensesData];
     });
   };
 

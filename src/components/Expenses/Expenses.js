@@ -24,6 +24,10 @@ const Expenses = (props) => {
     console.log(filterData);
   };
 
+  const selectedExpenseYear = props.items.filter(
+    (expensesData) => expensesData.date.getFullYear().toString() === filterYear
+  );
+
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -32,8 +36,9 @@ const Expenses = (props) => {
       />
       {/* 파생/계산된 상태의 결과 값를 보여주는 p태그 */}
       {/* <p>Data for years {filterInfoText} is hidden.</p> */}
-      {props.items.map((expensesData) => (
+      {selectedExpenseYear.map((expensesData) => (
         <ExpenseItem
+          key={expensesData.id}
           title={expensesData.title}
           price={expensesData.price}
           date={expensesData.date}
