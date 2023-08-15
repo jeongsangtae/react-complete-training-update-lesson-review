@@ -32,26 +32,13 @@ const Expenses = (props) => {
       />
       {/* 파생/계산된 상태의 결과 값를 보여주는 p태그 */}
       {/* <p>Data for years {filterInfoText} is hidden.</p> */}
-      <ExpenseItem
-        title={props.items[0].title}
-        price={props.items[0].price}
-        date={props.items[0].date}
-      />
-      <ExpenseItem
-        title={props.items[1].title}
-        price={props.items[1].price}
-        date={props.items[1].date}
-      />
-      <ExpenseItem
-        title={props.items[2].title}
-        price={props.items[2].price}
-        date={props.items[2].date}
-      />
-      <ExpenseItem
-        title={props.items[3].title}
-        price={props.items[3].price}
-        date={props.items[3].date}
-      />
+      {props.items.map((expensesData) => (
+        <ExpenseItem
+          title={expensesData.title}
+          price={expensesData.price}
+          date={expensesData.date}
+        />
+      ))}
     </Card>
   );
 };
