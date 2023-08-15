@@ -28,6 +28,19 @@ const Expenses = (props) => {
     (expensesData) => expensesData.date.getFullYear().toString() === filterYear
   );
 
+  let expensesContent = <p>비용 데이터 없음</p>;
+
+  if (selectedExpenseYear.length > 0) {
+    expensesContent = selectedExpenseYear.map((expensesData) => (
+      <ExpenseItem
+        key={expensesData.id}
+        title={expensesData.title}
+        price={expensesData.price}
+        date={expensesData.date}
+      />
+    ));
+  }
+
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -36,14 +49,7 @@ const Expenses = (props) => {
       />
       {/* 파생/계산된 상태의 결과 값를 보여주는 p태그 */}
       {/* <p>Data for years {filterInfoText} is hidden.</p> */}
-      {selectedExpenseYear.map((expensesData) => (
-        <ExpenseItem
-          key={expensesData.id}
-          title={expensesData.title}
-          price={expensesData.price}
-          date={expensesData.date}
-        />
-      ))}
+      {expensesContent}
     </Card>
   );
 };
