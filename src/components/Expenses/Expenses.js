@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import ExpenseItem from "./ExpenseItem";
-import ExpensesFilter from "./ExpensesFilter";
 import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 import "./Expenses.css";
 
 const Expenses = (props) => {
@@ -28,19 +28,6 @@ const Expenses = (props) => {
     (expensesData) => expensesData.date.getFullYear().toString() === filterYear
   );
 
-  let expensesContent = <p>비용 데이터 없음</p>;
-
-  if (selectedExpenseYear.length > 0) {
-    expensesContent = selectedExpenseYear.map((expensesData) => (
-      <ExpenseItem
-        key={expensesData.id}
-        title={expensesData.title}
-        price={expensesData.price}
-        date={expensesData.date}
-      />
-    ));
-  }
-
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -49,7 +36,7 @@ const Expenses = (props) => {
       />
       {/* 파생/계산된 상태의 결과 값를 보여주는 p태그 */}
       {/* <p>Data for years {filterInfoText} is hidden.</p> */}
-      {expensesContent}
+      <ExpensesList items={selectedExpenseYear} />
     </Card>
   );
 };
