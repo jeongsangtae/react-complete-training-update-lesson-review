@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 import "./Expenses.css";
 
 const Expenses = (props) => {
@@ -36,6 +37,7 @@ const Expenses = (props) => {
       />
       {/* 파생/계산된 상태의 결과 값를 보여주는 p태그 */}
       {/* <p>Data for years {filterInfoText} is hidden.</p> */}
+      <ExpensesChart expenses={selectedExpenseYear} />
       <ExpensesList items={selectedExpenseYear} />
     </Card>
   );
